@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Examples</title>
+    <meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no' />
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+    <style>
+        body {
+            margin: 0px;
+            width: 100vw;
+            height: 100vh;
+            background: #333;
+        }
+        /* relative 的left, top  百分比 根据父元素来计算 */
+        
+        .shadow {
+            position: relative;
+            left: 50%;
+            top: 50%;
+            border: 1px solid #000;
+            width: 250px;
+            height: 250px;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            overflow: hidden;
+        }
+        
+        .shadow::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 50px;
+            height: 50px;
+            box-shadow: 50px 50px #000, 150px 50px #000, 250px 50px #000, 50px 100px #000, 150px 100px #000, 250px 100px #000, 50px 150px #000, 150px 150px #000, 250px 150px #000, 50px 200px #000, 150px 200px #000, 250px 200px #000, 50px 250px #000, 150px 250px #000, 250px 250px #000;
+            animation: move 3s infinite;
+        }
+        
+        @keyframes move {
+            25% {
+                transform: translate(50px);
+                color: coral;
+                box-shadow: 50px 50px, 150px 50px, 250px 50px, 50px 100px, 150px 100px, 250px 100px, 50px 150px, 150px 150px, 250px 150px, 50px 200px, 150px 200px, 250px 200px, 50px 250px, 150px 250px, 250px 250px;
+            }
+            50% {
+                transform: translate(0px);
+                color: brown;
+                border-radius: 0;
+                box-shadow: 50px 50px, 150px 50px, 250px 50px, 100px 100px, 200px 100px, 300px 100px, 50px 150px, 150px 150px, 250px 150px, 100px 200px, 200px 200px, 300px 200px, 50px 250px, 150px 250px, 250px 250px;
+            }
+            75% {
+                transform: translate(0px);
+                color: teal;
+                border-radius: 50%;
+                box-shadow: 50px 50px, 150px 50px, 250px 50px, 100px 100px, 200px 100px, 300px 100px, 50px 150px, 150px 150px, 250px 150px, 100px 200px, 200px 200px, 300px 200px, 50px 250px, 150px 250px, 250px 250px;
+            }
+            100% {
+                border-radius: 0%;
+                box-shadow: 50px 50px, 150px 50px, 250px 50px, 50px 100px, 150px 100px, 250px 100px, 50px 150px, 150px 150px, 250px 150px, 50px 200px, 150px 200px, 250px 200px, 50px 250px, 150px 250px, 250px 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class=shadow></div>
+</body>
+
+</html>
