@@ -16,7 +16,35 @@
             height: 100vh;
             background: #333;
         }
-        /* relative 的left, top  百分比 根据父元素来计算 */
+        
+        .container {
+            margin: 10px auto;
+            padding: 10px;
+            height: 100px;
+            width: 100px;
+        }
+        
+        .header-pic {
+            position: relative;
+            height: 100px;
+            width: 100px;
+            background: url('../assets/timg.jpg');
+            background-size: 100% 100%;
+            border-radius: 50%;
+        }
+        
+        .header-pic::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 0%;
+            height: 100%;
+            width: 100%;
+            background: inherit;
+            border-radius: 50%;
+            filter: blur(10px) brightness(80%) opacity(.8);
+            z-index: -1;
+        }
         
         .shadow {
             position: relative;
@@ -29,6 +57,7 @@
             background: #fff;
             overflow: hidden;
         }
+        /* relative 的left, top  百分比 根据父元素来计算 */
         
         .shadow::before {
             content: "";
@@ -68,6 +97,9 @@
 </head>
 
 <body>
+    <div class=container>
+        <div class=header-pic></div>
+    </div>
     <div class=shadow></div>
 </body>
 
