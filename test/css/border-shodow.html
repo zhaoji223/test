@@ -15,6 +15,7 @@
             width: 100vw;
             height: 100vh;
             background: #333;
+            text-align: center;
         }
         
         .container {
@@ -47,10 +48,25 @@
         }
         /* 伪元素 不能添加在 替换元素上(例如: img, br) */
         
+        p {
+            display: inline-block;
+            font-size: 32px;
+            color: #fff;
+            filter: brightness(110%);
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #E91E63, 0 0 35px #E91E63, 0 0 40px #E91E63, 0 0 50px #E91E63, 0 0 75px #E91E63;
+            animation: neon-light 1.5s ease-in-out infinite alternate;
+        }
+        
+        @keyframes neon-light {
+            to {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #E91E63, 0 0 70px #E91E63, 0 0 80px #E91E63, 0 0 100px #E91E63, 0 0 150px #E91E63;
+            }
+        }
+        
         .shadow {
             position: relative;
             left: 50%;
-            top: 50%;
+            top: 20%;
             border: 1px solid #000;
             width: 250px;
             height: 250px;
@@ -101,6 +117,7 @@
     <div class=container>
         <div class=header-pic></div>
     </div>
+    <p>Box-Shadow</p>
     <div class=shadow></div>
 </body>
 
