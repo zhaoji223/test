@@ -17,14 +17,15 @@
             background: #333;
             text-align: center;
         }
-        
+
+        /*  图片背景 彩色shadow  */
         .container {
             margin: 10px auto;
             padding: 10px;
             height: 100px;
             width: 100px;
         }
-        
+
         .header-pic {
             position: relative;
             height: 100px;
@@ -33,7 +34,7 @@
             background-size: 100% 100%;
             border-radius: 50%;
         }
-        
+
         .header-pic::before {
             content: '';
             position: absolute;
@@ -47,7 +48,9 @@
             z-index: -1;
         }
         /* 伪元素 不能添加在 替换元素上(例如: img, br) */
-        
+
+
+        /* 霓虹灯shadow  */
         p {
             display: inline-block;
             font-size: 32px;
@@ -56,13 +59,56 @@
             text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #E91E63, 0 0 35px #E91E63, 0 0 40px #E91E63, 0 0 50px #E91E63, 0 0 75px #E91E63;
             animation: neon-light 1.5s ease-in-out infinite alternate;
         }
-        
+
         @keyframes neon-light {
             to {
                 text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #E91E63, 0 0 70px #E91E63, 0 0 80px #E91E63, 0 0 100px #E91E63, 0 0 150px #E91E63;
             }
         }
-        
+
+        /* 抖音 Logo  https://mp.weixin.qq.com/s/6hSW1A1uMY7CwvkPgQxSEw */
+        .douyin {
+            position: relative;
+            width: 37px;
+            height: 218px;
+            margin: 100px auto;
+            z-index: 1;
+            background: #fff;
+            filter: drop-shadow(-10px -10px 0 #24f6f0) contrast(150%) brightness(110%);
+            box-shadow: 11.6px 10px 0 0 #fe2d52;
+            z-index: 10;
+        }
+        .douyin::before {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 37px solid #fff;
+            border-top: 37px solid transparent;
+            border-radius: 50%;
+            top: 123px;
+            left: -137px;
+            transform: rotate(45deg);
+            filter: drop-shadow(16px 0px 0 #fe2d52);
+        }
+        .douyin::after {
+            content: "";
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            border: 30px solid #fff;
+            border-right: 30px solid transparent;
+            border-top: 30px solid transparent;
+            border-left: 30px solid transparent;
+            top: -100px;
+            right: -172px;
+            border-radius: 100%;
+            transform: rotate(45deg);
+            z-index: -10;
+            filter:drop-shadow(14px 0 0 #fe2d52);
+        }
+
+        /* box-shadow 的动态效果 */
         .shadow {
             position: relative;
             left: 50%;
@@ -74,8 +120,9 @@
             background: #fff;
             overflow: hidden;
         }
+
         /* relative 的left, top  百分比 根据父元素来计算 */
-        
+
         .shadow::before {
             content: "";
             position: absolute;
@@ -86,25 +133,28 @@
             box-shadow: 50px 50px #000, 150px 50px #000, 250px 50px #000, 50px 100px #000, 150px 100px #000, 250px 100px #000, 50px 150px #000, 150px 150px #000, 250px 150px #000, 50px 200px #000, 150px 200px #000, 250px 200px #000, 50px 250px #000, 150px 250px #000, 250px 250px #000;
             animation: move 3s infinite;
         }
-        
+
         @keyframes move {
             25% {
                 transform: translate(50px);
                 color: coral;
                 box-shadow: 50px 50px, 150px 50px, 250px 50px, 50px 100px, 150px 100px, 250px 100px, 50px 150px, 150px 150px, 250px 150px, 50px 200px, 150px 200px, 250px 200px, 50px 250px, 150px 250px, 250px 250px;
             }
+
             50% {
                 transform: translate(0px);
                 color: brown;
                 border-radius: 0;
                 box-shadow: 50px 50px, 150px 50px, 250px 50px, 100px 100px, 200px 100px, 300px 100px, 50px 150px, 150px 150px, 250px 150px, 100px 200px, 200px 200px, 300px 200px, 50px 250px, 150px 250px, 250px 250px;
             }
+
             75% {
                 transform: translate(0px);
                 color: teal;
                 border-radius: 50%;
                 box-shadow: 50px 50px, 150px 50px, 250px 50px, 100px 100px, 200px 100px, 300px 100px, 50px 150px, 150px 150px, 250px 150px, 100px 200px, 200px 200px, 300px 200px, 50px 250px, 150px 250px, 250px 250px;
             }
+
             100% {
                 border-radius: 0%;
                 box-shadow: 50px 50px, 150px 50px, 250px 50px, 50px 100px, 150px 100px, 250px 100px, 50px 150px, 150px 150px, 250px 150px, 50px 200px, 150px 200px, 250px 200px, 50px 250px, 150px 250px, 250px 250px;
@@ -118,6 +168,7 @@
         <div class=header-pic></div>
     </div>
     <p>Box-Shadow</p>
+    <div class=douyin></div>
     <div class=shadow></div>
 </body>
 
