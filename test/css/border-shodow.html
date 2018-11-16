@@ -66,17 +66,18 @@
             }
         }
 
-        /* 抖音 Logo  https://mp.weixin.qq.com/s/6hSW1A1uMY7CwvkPgQxSEw */
+        /* 抖音 Logo */
         .douyin {
             position: relative;
             width: 37px;
             height: 218px;
             margin: 100px auto;
-            z-index: 1;
             background: #fff;
             filter: drop-shadow(-10px -10px 0 #24f6f0) contrast(150%) brightness(110%);
             box-shadow: 11.6px 10px 0 0 #fe2d52;
             z-index: 10;
+            transform: rotateX(10deg) rotateY(5deg) rotateZ(-4deg);
+            animation: douyin-animation 3s linear infinite alternate
         }
         .douyin::before {
             content: "";
@@ -106,6 +107,42 @@
             transform: rotate(45deg);
             z-index: -10;
             filter:drop-shadow(14px 0 0 #fe2d52);
+        }
+        @keyframes douyin-animation {
+            4% {
+                transform: skewX(4deg) translate(-10px) blur(1px);
+            }
+            7% {
+                transform: skewX(-4deg) translate(10px);
+            }
+            9% {
+                transform: skewX(2deg) translate(-6px);
+            }
+            10% {
+                transform: skewX(-2deg)translate(6px);
+            }
+            11% {
+                transform: skewX(0deg)translate(-2px);
+            }
+            12% {
+                transform: skewX(0deg) translate(0px);
+            }
+            13% {
+                transform: skewX(1deg) translate(0px);
+                filter: drop-shadow(-10px -10px 0 #24f6f0) contrast(120%) brightness(110%) blur(3px);
+            }
+            30% {
+                filter: drop-shadow(-10px -10px 0 #24f6f0) contrast(150%) brightness(120%) blur(0px);
+            }
+            50% {
+                transform: rotateX(6deg) rotateY(4deg) rotateZ(-2deg) blur(2px);
+            }
+            80% {
+                transform: rotateX(3deg) rotateY(2deg) rotateZ(-1deg) blur(2px);
+            }
+            100% {
+                transform: blur(1px);
+            }
         }
 
         /* box-shadow 的动态效果 */
