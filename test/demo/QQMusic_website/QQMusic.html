@@ -14,12 +14,19 @@
         * {
             box-sizing: border-box;
         }
-        body, ul, li, button, textarea {
+        body, ul, li, button, textarea, h2, p {
             margin: 0;
             padding: 0
         }
         body {
             height: 100%;
+            color: #646464;
+            background: #f8f8f8;
+        }
+        body, button, input, select, textarea, th {
+            font-size: 12px;
+            line-height: 1.5;
+            font-family: Tahoma,\5FAE\8F6F\96C5\9ED1,"hiragino sans gb",Helvetica,Arial;
         }
         a {
             text-decoration: none;
@@ -31,11 +38,174 @@
         i, em {
             font-style: normal;
         }
+
+        /* webkit scroll */
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+        ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background: #8e8e8e;
+        }
+        ::-webkit-scrollbar-track-piece {
+            background: #FFF;
+        }
+
+        /* header */
+        .header {
+            background: url(data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBAQFBAYFBQYJBgUGCQsIBgYICwwKCgsKCgwQDAwMDAwMEAwODxAPDgwTExQUExMcGxsbHCAgICAgICAgICD/2wBDAQcHBw0MDRgQEBgaFREVGiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICD/wAARCABQAAEDAREAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAECCP/EABQQAQAAAAAAAAAAAAAAAAAAAAD/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQL/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDRjaAAAAAALICiQf/Z) repeat-x
+        }
+        .container {
+            margin: 0 auto;
+            height: 62px;
+            width: 1100px;
+        }
+        .logo {
+            display: inline-block;
+            margin-top: 8px;
+            height: 35px;
+            width: 212px;
+            background: url(./assets/logo.png) no-repeat;
+        }
+        .share {
+            float: right;
+            margin-top: 16px;
+            border: 2px solid #c5c5c5;
+            width: 112px;
+            height: 34px;
+            color: #000;
+            font-size: 16px;
+            line-height: 30px;
+            border-radius: 999px;
+            text-align: center;
+        }
+        .download {
+            float: right;
+            margin-top: 17px;
+            margin-right: 40px;
+        }
+        .download a {
+            font-size: 16px;
+            line-height: 30px;
+            color: #000;
+        }
+
+        /* 主体部分 */
+        .wrap {
+            min-width: 1100px;
+        }
+
+        /* part 1 */
+        .part-1 {
+            height: 700px;
+            overflow: hidden;
+            background: url(./assets/bg_1.jpg) no-repeat;
+            background-position: center;
+        }
+        .section_inner {
+            position: relative;
+            margin: 0 auto;
+            min-width: 1100px;
+            width: 1100px;
+            height: 100%;
+        }
+        .pic-1 {
+            position: absolute;
+            left: 0;
+            top: 120px;
+            width: 628px;
+            animation: float ease-in-out 3s infinite;
+        }
+        .part-1-title {
+            position: absolute;
+            top: 230px;
+            left: 700px;
+            width: 393px;
+            height: 86px;
+            background: url(./assets/tit_1.png) no-repeat;
+            line-height: 999em;
+            overflow: hidden;
+            animation: slideup 1s ease-in-out .2s both;
+        }
+        .part-1-btn {
+            position: absolute;
+            top: 360px;
+            left: 700px;
+            height: 50px;
+            width: 240px;
+            font-size: 22px;
+            background: #31c273;
+            border-radius: 999px;
+            text-align: center;
+            line-height: 50px;
+            animation: slideup 1s ease-in-out .5s both;
+        }
+        .part-1-desc {
+            position: absolute;
+            top: 430px;
+            left: 700px;
+            animation: slideup 1s ease-in-out .8s both;
+        }
+        .part-1-desc span{
+            display: block;
+            margin-bottom: 5px;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0)
+            }
+            50% {
+                transform: translateY(1em)
+            }
+            100% {
+                transform: translateY(0)
+            }
+        }
+        @keyframes slideup {
+            0% {
+                opacity: 0;
+                transform: translate3d(0, 30px, 0);
+            }
+            100% {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
     </style>
 </head>
 
-<body>
-
+<body style='height: 2000px;'> 
+    <section>
+        <div class='header'>
+            <div class='container'>
+                <a href='http://y.qq.com/download/mac.html' class='logo'></a>
+                <a href='http://y.qq.com/download/mac.html' class='share'>分享</a>
+                <div class='download'>
+                    <a href="http://y.qq.com/download/mac.html">下载其他客户端</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class='warp'>
+            <!-- <div class='part-1'>
+                <div class='section_inner'>
+                    <img class='pic-1' src="./assets/pic_1.jpg" alt="">
+                    <h2 class='part-1-title'>QQ音乐Mac版 素美如雪 轻盈上线</h2>
+                    <a href="javascript::" class='part-1-btn'>立即下载</a>
+                    <p class='part-1-desc'>
+                        <span>运行环境：OS X 10.9 或者以上</span>
+                        <span>最新版本：最新版:5.6.0</span>
+                        <span>更新时间：2018-11-12</span>
+                    </p>
+                </div>
+            </div> -->
+            <div class='part-2'>
+                
+            </div>
+        </div>
+    </section>
 </body>
 
 </html>
