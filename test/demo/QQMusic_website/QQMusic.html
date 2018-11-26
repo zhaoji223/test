@@ -103,12 +103,13 @@
             background: url(./assets/bg_1.jpg);
             background-position: center;
         }
-        .section_inner {
+        .section-inner {
             position: relative;
             margin: 0 auto;
             min-width: 1100px;
             width: 1100px;
             height: 100%;
+            overflow: hidden;
         }
         .pic-1 {
             position: absolute;
@@ -156,7 +157,35 @@
         .part-2 {
             height: 941px;
             background-color: #fafafc;
+            background: url(./assets/bg_2.jpg);
+            background-position: center 2px;
         }
+        .part-2-title {
+            margin: 100px auto 0;
+            width: 685px;
+            height: 126px;
+            background: url(./assets/tit_2.png);
+            line-height: 999em;
+            overflow: hidden;
+        }
+        .computer {
+            position: absolute;
+            top: 350px;
+            left: 100px;
+            width: 918px;
+            height: 531px;
+            background: url(./assets/pic_2.png)
+        }
+        .interface {
+            position: absolute;
+            top: 91px;
+            left: 311px;
+            width: 399px;
+            height: 289px;
+            background: url(./assets/interface.jpg);
+            background-size: 399px 289px;
+        }
+
 
         @keyframes float {
             0% {
@@ -197,7 +226,7 @@
     <section>
         <div class='warp'>
             <div class='part-1'>
-                <div class='section_inner'>
+                <div class='section-inner'>
                     <img class='pic-1' src="./assets/pic_1.jpg" alt="">
                     <h2 class='part-1-title'>QQ音乐Mac版 素美如雪 轻盈上线</h2>
                     <a href="javascript::" class='part-1-btn'>立即下载</a>
@@ -209,7 +238,12 @@
                 </div>
             </div>
             <div class='part-2'>
-
+                <div class='section-inner'>
+                    <h2 class='part-2-title'>简洁明快的风格 感官上的新体验 界面一目了然 让音乐更纯粹</h2>
+                    <div class='computer'>
+                        <img class='interface' src="./assets/interface.jpg" alt="">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
