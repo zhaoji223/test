@@ -176,14 +176,18 @@
             height: 531px;
             background: url(./assets/pic_2.png)
         }
-        .interface {
+        .computer-window {
             position: absolute;
             top: 91px;
             left: 311px;
             width: 399px;
             height: 289px;
-            background: url(./assets/interface.jpg);
-            background-size: 399px 289px;
+            background: #fff;
+            overflow: hidden;
+        }
+        .interface {
+            width: 100%;
+            animation: window_scroll 1.5s ease-in-out 1.5s both;
         }
 
 
@@ -206,6 +210,14 @@
             100% {
                 opacity: 1;
                 transform: translate3d(0, 0, 0);
+            }
+        }
+        @keyframes window_scroll {
+            0% {
+                transform: translate3d(0, 0, 0)
+            }
+            100% {
+                transform: translate3d(0, -424px, 0)
             }
         }
     </style>
@@ -241,7 +253,9 @@
                 <div class='section-inner'>
                     <h2 class='part-2-title'>简洁明快的风格 感官上的新体验 界面一目了然 让音乐更纯粹</h2>
                     <div class='computer'>
-                        <img class='interface' src="./assets/interface.jpg" alt="">
+                        <div class='computer-window'>
+                            <img class='interface' src="./assets/interface.jpg" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
