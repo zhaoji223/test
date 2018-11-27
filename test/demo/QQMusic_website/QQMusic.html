@@ -190,6 +190,45 @@
             animation: window_scroll 1.5s ease-in-out 1.5s both;
         }
 
+        .part-2-2 {
+            height: 243px;
+            background: #fafafc;
+        }
+        .list-item {
+            float: left;
+            position: relative;
+            margin: 0 20px 0 90px;
+            width: 250px;
+            animation: slideup .5s ease-in both;
+        }
+        .list-item:nth-child(1) {
+            animation-delay: .3s;
+        }
+        .list-item:nth-child(2) {
+            animation-delay: .5s;
+        }
+        .list-item:nth-child(3) {
+            animation-delay: .7s;
+        }
+        .list-item:before {
+            content: ' ';
+            position: absolute;
+            top: 25px;
+            width: 20px;
+            height: 2px;
+            background: #e1e1e2;
+        }
+        .list-item-title {
+            margin: 50px 0 10px;
+            font-size: 18px;
+            font-size: 400;
+            color: #000;
+        }
+        .list-item-desc {
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: grey;
+        }
 
         @keyframes float {
             0% {
@@ -256,6 +295,25 @@
                         <div class='computer-window'>
                             <img class='interface' src="./assets/interface.jpg" alt="">
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class='part-2-2'>
+                <div class='section-inner'>
+                    <div class='list-item'>
+                        <p class='list-item-title'>轻盈的视觉</p>
+                        <p class='list-item-desc'>界面回归简洁，整体采用浅色调</p>
+                        <p class='list-item-desc'>减少视觉打扰，更突出音乐内容</p>
+                    </div>
+                    <div class='list-item'>
+                        <p class='list-item-title'>简洁的操作</p>
+                        <p class='list-item-desc'>轻量的操作层级，直观的功能展示</p>
+                        <p class='list-item-desc'>轻松上手，方便易用</p>
+                    </div>
+                    <div class='list-item'>
+                        <p class='list-item-title'>更原生的感受</p>
+                        <p class='list-item-desc'>采用Mac系统透明模糊效果，界面与系统</p>
+                        <p class='list-item-desc'>更贴近。全新手势控制，操作更便捷</p>
                     </div>
                 </div>
             </div>
