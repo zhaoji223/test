@@ -14,7 +14,7 @@
         * {
             box-sizing: border-box;
         }
-        body, ul, li, button, textarea, h2, p {
+        body, ul, li, button, textarea, h2, h3, p {
             margin: 0;
             padding: 0
         }
@@ -230,6 +230,93 @@
             color: grey;
         }
 
+        /* part-3 */
+        .part-3 {
+            height: 886px;
+            background-color: #ffffff;
+            background: url(http://y.gtimg.cn/mediastyle/app/download/img/mac_small/bg_3.jpg) no-repeat;
+            background-position: center -4px;
+        }
+        .part-3-title {
+            margin: 100px auto 0;
+            width: 392px;
+            height: 231px;
+            background: url(http://y.gtimg.cn/mediastyle/app/download/img/mac_big/tit_3@2x.png) no-repeat;
+            background-size: 100%;
+            line-height: 999em;
+            overflow: hidden;
+            animation: slideup 1s ease-in-out .2s both;
+        }
+        .part-3-pic {
+            position: absolute;
+            top: 475px;
+            left: 514px;
+            width: 387px;
+            animation: slideup 1s ease-in-out .5s both
+        }
+
+        .part-3-2 {
+            height: 380px;
+            background: #fff;
+        }
+        .part-3-list {
+            position: absolute;
+            top: 38px;
+            left: 0;
+        }
+        .part-3-list-item {
+            float: left;
+            margin: 0 52px;
+            text-align: center;
+            animation: slideup .5s ease-in both;
+        }
+        .part-3-list-item:nth-child(1) {
+            animation-delay: .3s;
+        }
+        .part-3-list-item:nth-child(2) {
+            animation-delay: .5s;
+        }
+        .part-3-list-item:nth-child(3) {
+            animation-delay: .7s;
+        }
+        .part-3-list-item:nth-child(4) {
+            animation-delay: .9s;
+        }
+        .part-3-list-item:nth-child(1) .part-3-list-item-pic {
+            background: url(https://y.gtimg.cn/mediastyle/app/download/img/mac_big/sprite_sound_effect@2x.png);
+            background-size: 165px;
+            background-position: 0 -4px;
+        }
+        .part-3-list-item:nth-child(2) .part-3-list-item-pic {
+            background: url(https://y.gtimg.cn/mediastyle/app/download/img/mac_big/sprite_sound_effect@2x.png);
+            background-size: 165px;
+            background-position: 0 -124px;
+        }
+        .part-3-list-item:nth-child(3) .part-3-list-item-pic {
+            background: url(https://y.gtimg.cn/mediastyle/app/download/img/mac_big/sprite_sound_effect@2x.png);
+            background-size: 165px;
+            background-position: 0 -244px;
+        }
+        .part-3-list-item:nth-child(4) .part-3-list-item-pic {
+            background: url(https://y.gtimg.cn/mediastyle/app/download/img/mac_big/sprite_sound_effect@2x.png);
+            background-size: 165px;
+            background-position: 0 -364px;
+        }
+        .part-3-list-item-pic {
+            height: 112px;
+            width: 165px;
+        }
+        .part-3-list-item-tit {
+            margin: 35px 0 5px;
+            font-size: 18px;
+            font-weight: 400;
+            color: #000;
+        }
+        .part-3-list-item-desc {
+            font-size: 14px;
+            color: grey;
+        }
+
         @keyframes float {
             0% {
                 transform: translateY(0)
@@ -314,6 +401,38 @@
                         <p class='list-item-title'>更原生的感受</p>
                         <p class='list-item-desc'>采用Mac系统透明模糊效果，界面与系统</p>
                         <p class='list-item-desc'>更贴近。全新手势控制，操作更便捷</p>
+                    </div>
+                </div>
+            </div>
+            <div class='part-3'>
+                <div class='section-inner'>
+                    <h2 class='part-3-title'>独家音效 震撼体验 四大音效满足你多样的音乐口味</h2>
+                    <img class='part-3-pic' src="https://y.gtimg.cn/mediastyle/app/download/img/mac_big/pic_3.png?max_age=2592000" alt="">
+                </div>
+            </div>
+            <div class='part-3-2'>
+                <div class='section-inner'>
+                    <div class='part-3-list'>
+                        <div class='part-3-list-item'>
+                            <div class='part-3-list-item-pic'></div>
+                            <h3 class='part-3-list-item-tit'>现场律动</h3>
+                            <p class='part-3-list-item-desc'>适合现场演唱会、舞曲</p>
+                        </div>
+                        <div class='part-3-list-item'>
+                            <div class='part-3-list-item-pic'></div>
+                            <h3 class='part-3-list-item-tit'>清澈人声</h3>
+                            <p class='part-3-list-item-desc'>适合流行、古典</p>
+                        </div>
+                        <div class='part-3-list-item'>
+                            <div class='part-3-list-item-pic'></div>
+                            <h3 class='part-3-list-item-tit'>超重低音</h3>
+                            <p class='part-3-list-item-desc'>适合现场摇滚、电子乐</p>
+                        </div>
+                        <div class='part-3-list-item'>
+                            <div class='part-3-list-item-pic'></div>
+                            <h3 class='part-3-list-item-tit'>全景环绕</h3>
+                            <p class='part-3-list-item-desc'>球面立体音技术</p>
+                        </div>
                     </div>
                 </div>
             </div>
