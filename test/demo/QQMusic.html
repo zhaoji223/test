@@ -140,7 +140,6 @@
             border-radius: 999px;
             text-align: center;
             line-height: 50px;
-            animation: slideup 1s ease-in-out .5s both;
         }
         .part-1-desc {
             position: absolute;
@@ -187,6 +186,8 @@
         }
         .interface {
             width: 100%;
+        }
+        .interface-animation {
             animation: window_scroll 1.5s ease-in-out 1.5s both;
         }
 
@@ -199,7 +200,6 @@
             position: relative;
             margin: 0 20px 0 90px;
             width: 250px;
-            animation: slideup .5s ease-in both;
         }
         .list-item:nth-child(1) {
             animation-delay: .3s;
@@ -245,14 +245,12 @@
             background-size: 100%;
             line-height: 999em;
             overflow: hidden;
-            animation: slideup 1s ease-in-out .2s both;
         }
         .part-3-pic {
             position: absolute;
             top: 475px;
             left: 514px;
             width: 387px;
-            animation: slideup 1s ease-in-out .5s both
         }
 
         .part-3-2 {
@@ -268,7 +266,6 @@
             float: left;
             margin: 0 52px;
             text-align: center;
-            animation: slideup .5s ease-in both;
         }
         .part-3-list-item:nth-child(1) {
             animation-delay: .3s;
@@ -330,14 +327,12 @@
             line-height: 999em;
             overflow: hidden;
             background: url(https://y.gtimg.cn/mediastyle/app/download/img/mac_small/tit_4.png);
-            animation: slideup 1s ease-in-out .2s both;
         }
         .part-4-pic {
             position: absolute;
             top: 408px;
             left: 320px;
             width: 766px;
-            animation: slideup 1s ease-in-out .5s both;
         }
 
         /* part-6 */
@@ -379,6 +374,29 @@
             background: #31c27c;
         }
 
+        .hidden {
+            visibility: hidden;
+        }
+        .animation-slideup {
+            animation: slideup 1s ease-in-out .5s both;
+        }
+        .animation-title {
+            animation: slideup 1s ease-in-out .2s both;
+        }
+        .animation-list {
+            animation: slideup .5s ease-in both;
+        }
+        .animation-show {
+            animation: show 2s ease-in both;
+        }
+        @keyframes show {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
         @keyframes float {
             0% {
                 transform: translateY(0)
@@ -438,7 +456,7 @@
                 <div class='section-inner'>
                     <img class='pic-1' src="http://y.gtimg.cn/mediastyle/app/download/img/mac/pic_1.jpg" alt="">
                     <h2 class='part-1-title'>QQ音乐Mac版 素美如雪 轻盈上线</h2>
-                    <a href="javascript::" class='part-1-btn'>立即下载</a>
+                    <a href="javascript::" class='part-1-btn animation-slideup'>立即下载</a>
                     <p class='part-1-desc'>
                         <span>运行环境：OS X 10.9 或者以上</span>
                         <span>最新版本：最新版:5.6.0</span>
@@ -448,7 +466,7 @@
             </div>
             <div class='part-2'>
                 <div class='section-inner'>
-                    <h2 class='part-2-title'>简洁明快的风格 感官上的新体验 界面一目了然 让音乐更纯粹</h2>
+                    <h2 class='part-2-title hidden'>简洁明快的风格 感官上的新体验 界面一目了然 让音乐更纯粹</h2>
                     <div class='computer'>
                         <div class='computer-window'>
                             <img class='interface' src="http://y.gtimg.cn/mediastyle/app/download/img/mac/interface.jpg" alt="">
@@ -458,17 +476,17 @@
             </div>
             <div class='part-2-2'>
                 <div class='section-inner'>
-                    <div class='list-item'>
+                    <div class='list-item hidden'>
                         <p class='list-item-title'>轻盈的视觉</p>
                         <p class='list-item-desc'>界面回归简洁，整体采用浅色调</p>
                         <p class='list-item-desc'>减少视觉打扰，更突出音乐内容</p>
                     </div>
-                    <div class='list-item'>
+                    <div class='list-item hidden'>
                         <p class='list-item-title'>简洁的操作</p>
                         <p class='list-item-desc'>轻量的操作层级，直观的功能展示</p>
                         <p class='list-item-desc'>轻松上手，方便易用</p>
                     </div>
-                    <div class='list-item'>
+                    <div class='list-item hidden'>
                         <p class='list-item-title'>更原生的感受</p>
                         <p class='list-item-desc'>采用Mac系统透明模糊效果，界面与系统</p>
                         <p class='list-item-desc'>更贴近。全新手势控制，操作更便捷</p>
@@ -477,29 +495,29 @@
             </div>
             <div class='part-3'>
                 <div class='section-inner'>
-                    <h2 class='part-3-title'>独家音效 震撼体验 四大音效满足你多样的音乐口味</h2>
-                    <img class='part-3-pic' src="https://y.gtimg.cn/mediastyle/app/download/img/mac_big/pic_3.png?max_age=2592000" alt="">
+                    <h2 class='part-3-title hidden'>独家音效 震撼体验 四大音效满足你多样的音乐口味</h2>
+                    <img class='part-3-pic hidden' src="https://y.gtimg.cn/mediastyle/app/download/img/mac_big/pic_3.png?max_age=2592000" alt="">
                 </div>
             </div>
             <div class='part-3-2'>
                 <div class='section-inner'>
                     <div class='part-3-list'>
-                        <div class='part-3-list-item'>
+                        <div class='part-3-list-item hidden'>
                             <div class='part-3-list-item-pic'></div>
                             <h3 class='part-3-list-item-tit'>现场律动</h3>
                             <p class='part-3-list-item-desc'>适合现场演唱会、舞曲</p>
                         </div>
-                        <div class='part-3-list-item'>
+                        <div class='part-3-list-item hidden'>
                             <div class='part-3-list-item-pic'></div>
                             <h3 class='part-3-list-item-tit'>清澈人声</h3>
                             <p class='part-3-list-item-desc'>适合流行、古典</p>
                         </div>
-                        <div class='part-3-list-item'>
+                        <div class='part-3-list-item hidden'>
                             <div class='part-3-list-item-pic'></div>
                             <h3 class='part-3-list-item-tit'>超重低音</h3>
                             <p class='part-3-list-item-desc'>适合现场摇滚、电子乐</p>
                         </div>
-                        <div class='part-3-list-item'>
+                        <div class='part-3-list-item hidden'>
                             <div class='part-3-list-item-pic'></div>
                             <h3 class='part-3-list-item-tit'>全景环绕</h3>
                             <p class='part-3-list-item-desc'>球面立体音技术</p>
@@ -509,14 +527,14 @@
             </div>
             <div class='part-4'>
                 <div class='section-inner'>
-                    <h2 class='part-4-title'>全新内容 最懂你的音乐馆 挖掘Mac用户独有听歌特点 为你推荐最适合的音乐内容</h2>
-                    <img class='part-4-pic' src="https://y.gtimg.cn/mediastyle/app/download/img/mac/pic_4.png" alt="">
+                    <h2 class='part-4-title hidden'>全新内容 最懂你的音乐馆 挖掘Mac用户独有听歌特点 为你推荐最适合的音乐内容</h2>
+                    <img class='part-4-pic hidden' src="https://y.gtimg.cn/mediastyle/app/download/img/mac/pic_4.png" alt="">
                 </div>
             </div>
             <div class='part-6'>
                 <div class='section-inner'>
-                    <h2 class='part-6-title'>更多惊喜 等你发现</h2>
-                    <div class='feature-list'>
+                    <h2 class='part-6-title hidden'>更多惊喜 等你发现</h2>
+                    <div class='feature-list hidden'>
                         <div class="feature_list__item">下载历史漫游</div>
                         <div class="feature_list__item">歌手电台</div> 
                         <div class="feature_list__item">下一首播放</div>
@@ -538,6 +556,58 @@
             </div>
         </div>
     </section>
+    <script>
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+            let visualHeight = document.documentElement.clientHeight
+            let totalHeight = scrollTop + visualHeight
+
+            let part2 = document.getElementsByClassName('part-2-title')[0]
+            let interface = document.getElementsByClassName('interface')[0]
+            let part2_list = document.getElementsByClassName('list-item')
+            let part3 = document.getElementsByClassName('part-3-title')[0]
+            let part3_pic = document.getElementsByClassName('part-3-pic')[0]
+            let part3_list = document.getElementsByClassName('part-3-list-item')
+            let part4 = document.getElementsByClassName('part-4-title')[0]
+            let part4_pic = document.getElementsByClassName('part-4-pic')[0]
+            let part6 = document.getElementsByClassName('part-6-title')[0]
+            let part6_list = document.getElementsByClassName('feature-list')[0]
+            
+            
+            if (totalHeight > 780) {
+                animationTitle(part2, 'animation-title')
+                interface.classList.add('interface-animation')
+            }
+            if (totalHeight > 1800) {
+                Array.from(part2_list).map(item => {animationTitle(item, 'animation-list')})
+            }
+            if (totalHeight > 2200) {
+                animationTitle(part3, 'animation-title')
+            }
+            if (totalHeight > 2580) {
+                animationTitle(part3_pic, 'animation-slideup')
+            }
+            if (totalHeight > 3020) {
+                Array.from(part3_list).map(item => {animationTitle(item, 'animation-list')})
+            }
+            if (totalHeight > 3400) {
+                animationTitle(part4, 'animation-title')
+            }
+            if (totalHeight > 3760) {
+                animationTitle(part4_pic, 'animation-slideup')
+            }
+            if (totalHeight > 4400) {
+                animationTitle(part6, 'animation-title')
+            }
+            if (totalHeight > 4660) {
+                animationTitle(part6_list, 'animation-show')
+            }
+        })
+        function animationTitle(dom, className) {
+            dom.classList.remove('hidden')
+            dom.classList.add(className)
+        }
+    </script>
 </body>
 
 </html>
