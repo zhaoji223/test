@@ -4,17 +4,67 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Examples</title>
+    <title>西彬呀</title>
     <meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no' />
     <meta name="description" content="">
     <meta name="keywords" content="">
     <link href="" rel="stylesheet">
     <style>
+        * {
+            transform-style: preserve-3d;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        ul, li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .container {
+            margin: 100px auto 0;
+            text-align: center;
+        }
+        .wrap {
+            display: block;
+            margin: 0 auto;
+            width: 744px;
+            height: 174px;
+            perspective: 800px;
+        }
+        .card {
+            display: inline-block;
+            border: 1px solid #bec7d6;
+            width: 472px;
+            height: 174px;
+            border-radius: 6px;
+            background: url('./img/xibinya2.jpg');
+            background-size: contain;
+        }
+        .card2 {
+            position: absolute;
+            left: 300px;
+            display: inline-block;
+            border: 1px solid #bec7d6;
+            width: 472px;
+            height: 174px;
+            border-radius: 6px;
+            background: url('./img/xibinya4.jpg');
+            background-size: contain;
+            transform-origin: 68% 50%;
+            transform: rotateY(-36deg) scale(.8);
+        }
     </style>
 </head>
 
 <body>
-
+    <div class='container'>
+        <ul class='wrap'>
+            <li class='card'></li>
+            <li class='card2'></li>
+        </ul>
+    </div>
 </body>
 
 </html>
