@@ -10,51 +10,69 @@
     <meta name="keywords" content="">
     <link href="" rel="stylesheet">
     <style>
-        .wrap {
-  height: 40px;
-  line-height: 20px;
-  overflow: hidden;
-}
-.wrap .text {
-  float: right;
-  margin-left: -5px;
-  width: 100%;
-  word-break:break-all;
-}
-.wrap::before {
-  float: left;
-  width: 5px;
-  content: '';
-  height: 40px;
-}
-.wrap::after {
-  float: right;
-  content: "...";
-  height: 20px;
-  line-height: 20px;
-  padding-right: 5px;
-  text-align: right;
-  width: 3em;
-  margin-left: -3em;
-  position: relative;
-  left: 100%;
-  top: -20px;
-  padding-right: 5px;
-  /* 显示更好的效果 */
-  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), to(white), color-stop(50%, white));
-  background: -moz-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
-  background: -o-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
-  background: -ms-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
-  background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
-}
+        .tittle {
+            margin: 100px 90px 20px;
+            font-size: 2.3rem;
+        }
+        .box {
+            border: 2px solid #dddddd;
+            width: 86%;
+            height: 160px;
+            margin: 0 auto;
+            line-height: 20px;
+            font-weight: 800;
+            overflow: hidden;
 
+        }
+        .notice {
+            list-style: none;
+            padding: 10px 20px;
+            margin: 0;
+        }
+        ul>li {
+            height: 30px;
+            font-size: 1.3rem;
+        }
+        @keyframes notice-loop {
+            from {
+                margin-top: 0px
+            }
+            to {
+                margin-top: -38px;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <div class="wrap">
-        <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos labore sit vel itaque delectus atque quos magnam assumenda quod architecto perspiciatis animi.</div>
-      </div>
+    <div class="notice-loop">
+        <div class="tittle">公告轮询</div>
+        <div class="box">
+            <ul class="notice" id='notice-loop'>
+                <li>test1</li>
+                <li>test2</li>
+                <li>test3</li>
+                <li>test4</li>
+                <li>test5</li>
+                <li>test6</li>
+                <li>test7</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        let loop = document.getElementById('notice-loop')
+        function noticeLoop () {
+            loop.style.animation = 'notice-loop 2s';
+            let fc = loop.firstElementChild;
+            setTimeout(() => {
+                loop.style.animation = '';
+                loop.appendChild(fc);
+                loop.style.marginTop = 0;
+            }, 1000)
+        }
+        
+        setInterval(noticeLoop, 3000)
+    </script>
 </body>
 
 </html>
