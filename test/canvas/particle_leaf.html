@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Examples</title>
+    <meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no' />
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+</head>
+
+<body>
+    <canvas id='myCanvas' width="300" height="300" onmouseenter='drawPixels()' onmouseleave='drawImage()'></canvas>
+    <script>
+        let canvas = document.getElementById('myCanvas');
+        let ctx = canvas.getContext('2d');
+        let image = new Image();
+        let pixels = [];
+        let imageData;
+        (function() {
+            image.src = './img/logo.png';
+            image.width = 300;
+            image.height = 300;
+            image.onload = function() {
+                ctx.drawImage(image,(canvas.width-image.width)/2,(canvas.height-image.height)/2,image.width,image.height);
+                imageData=ctx.getImageData((canvas.width-image.width)/2,(canvas.height-image.height)/2,image.width,image.height); //获取图表像素信息
+                getPixels()
+                
+            }
+        })()
+        function getPixels() { 
+            let pos = 0;
+            let data = imageData.data;
+            for (let i = 1; i <= image.width; i++) {
+                for (let j = 1; j <= image.height; j++) {
+                    pos=((i-1)*image.width+(j-1)) * 4; 
+                    if (data[pos] >= 0) {
+                        let pixel = {
+                            x: j + Math.random() * 20,
+                            y: i + Math.random() * 20,
+                            fillStyle: 'rgba('+data[pos]+','+(data[pos+1])+','+(data[pos+2])+','+(data[pos+3])+')'
+                        }
+                        pixels.push(pixel)
+                    }
+                }
+            }
+        }
+
+        function drawPixels() {
+            ctx.clearRect(0, 0, 300, 300)
+            let temp = ''
+            for(let x = 0; x < pixels.length; x++) {
+                temp = pixels[x]
+                ctx.fillStyle = temp.fillStyle
+                ctx.fillRect(temp.x, temp.y, 1, 1)
+            }
+        }
+        function drawImage() {
+            ctx.clearRect(0, 0, 300, 300)
+            ctx.drawImage(image,(canvas.width-image.width)/2,(canvas.height-image.height)/2,image.width,image.height);
+        }
+    </script>
+</body>
+
+</html>

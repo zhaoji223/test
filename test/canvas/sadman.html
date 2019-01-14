@@ -32,6 +32,8 @@
         const canvas = {
             init() {
                 this.ele = document.createElement('canvas')
+
+                console.log(this.ele)
                 document.body.appendChild(this.ele)
                 this.resize()
                 window.addEventListener('resize', () => this.resize(), false)
