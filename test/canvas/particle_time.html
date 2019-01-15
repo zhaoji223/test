@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Examples</title>
+    <meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no' />
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+</head>
+
+<body>
+    <canvas id='myCanvas' width="343" height="115" style='background: #b5c4c0;'></canvas>
+    <script>
+        let canvas = document.getElementById('myCanvas')
+        let ctx = canvas.getContext('2d')
+        let imageData
+        let pixels = []
+        
+        function time() {
+            pixels = []
+            drawTime()
+            getPixels()
+            drawPixels()
+            requestAnimationFrame(time)
+        }
+        time()
+
+
+        function drawTime() {
+            ctx.clearRect(0, 0, 343, 115)
+            ctx.font = "80px 黑体"
+            ctx.textBaseline = "top"
+            ctx.fillStyle = "rgba(245,245,245,1)"
+            ctx.fillText(getCurTime(), 10, 12, 343, 115)
+            imageData = ctx.getImageData(0, 0, 343, 115)
+        }
+
+        function getPixels() {
+            let pos
+            let data = imageData.data
+            for(let i = 1; i <= 115; i++) {
+                for(let j = 1; j <= 343; j++) {
+                    pos = [(i - 1) * 343 + j - 1] * 4
+                    pixels.push({
+                        x: j + Math.random() * 10,
+                        y: i + Math.random() * 10,
+                        fillStyle: `rgba(${data[pos]}, ${data[pos + 1]}, ${data[pos + 2]}, ${data[pos + 3]})`
+                    })
+                }
+            }
+        }
+
+        function drawPixels() {
+            ctx.clearRect(0, 0, 343, 115)
+            for(let i in pixels) {
+                ctx.fillStyle = pixels[i].fillStyle
+                let r = Math.random() * 4;
+                ctx.fillRect(pixels[i].x, pixels[i].y, r, r)
+            }
+        }
+
+        function getCurTime() {
+            let now = new Date()
+            return `${now.getHours()}:${now.getMinutes()}:${now.getSeconds() > 10 ? now.getSeconds() : '0' + now.getSeconds()}`
+        }
+        
+
+    </script>
+</body>
+
+</html>
