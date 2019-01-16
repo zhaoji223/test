@@ -35,39 +35,39 @@
             perspective: 800px;
         }
         .card {
-            display: inline-block;
+            position: absolute;
+            left: calc(50% - 236px);
             border: 1px solid #bec7d6;
             width: 472px;
-            height: 174px;
+            height: 172px;
             border-radius: 6px;
+            transition: all .6s;
+        }
+        .card1 {
             background: url('./img/xibinya2.jpg');
             background-size: contain;
         }
         .card2 {
-            position: absolute;
-            left: 300px;
-            display: inline-block;
-            border: 1px solid #bec7d6;
-            width: 472px;
-            height: 174px;
-            border-radius: 6px;
             background: url('./img/xibinya4.jpg');
             background-size: contain;
-            transform-origin: 68% 50%;
-            transform: rotateY(-36deg) scale(.8);
         }
         .card3 {
-            position: absolute;
-            left: 300px;
-            display: inline-block;
-            border: 1px solid #bec7d6;
-            width: 472px;
-            height: 174px;
-            border-radius: 6px;
             background: url('./img/xibinya4.jpg');
             background-size: contain;
-            transform-origin: 68% 50%;
-            transform: rotateY(36deg) scale(.8);
+        }
+        .next {
+            transform: rotateY(-36deg) translate3d(40px, 0, -400px);
+        }
+        .pre {
+            transform: rotateY(36deg) translate3d(-40px, 0, -400px);
+        }
+        .next-disappear {
+            opacity: 0;
+            transform: rotateY(-24deg) translate3d(220px, 0, -600px);
+        }
+        .pre-disappear {
+            opacity: 0;
+            transform: rotateY(24deg) translate3d(-220px, 0, -600px);
         }
     </style>
 </head>
@@ -75,11 +75,22 @@
 <body>
     <div class='container'>
         <ul class='wrap'>
-            <li class='card'></li>
-            <li class='card2'></li>
-            <li class='card3'></li>
+            <li id='cur' class='card1 card cur'></li>
+            <li id='next' class='card2 card next' onclick='next()'></li>
+            <li id='pre' class='card3 card pre'></li>
         </ul>
     </div>
+    <script>
+        let nextEle = document.getElementById('next')
+        let preEle = document.getElementById('pre')
+        let curEle = document.getElementById('cur')
+        function next() {
+            curEle.classList.toggle('pre')
+            nextEle.classList.toggle('next')
+            preEle.classList.toggle('pre-disappear')
+
+        }
+    </script>
 </body>
 
 </html>
