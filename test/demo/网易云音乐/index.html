@@ -35,6 +35,7 @@
             perspective: 800px;
         }
         .card {
+            display: none;
             position: absolute;
             left: calc(50% - 236px);
             border: 1px solid #bec7d6;
@@ -52,8 +53,45 @@
             background-size: contain;
         }
         .card3 {
-            background: url('./img/xibinya4.jpg');
+            background: url('./img/xibinya1.jpg');
             background-size: contain;
+        }
+        .card4 {
+            background: url('./img/xibinya3.jpg');
+            background-size: contain;
+        }
+        .card5 {
+            background: url('./img/xibinya5.jpg');
+            background-size: contain;
+        }
+        .card6 {
+            background: url('./img/xibinya6.jpg');
+            background-size: contain;
+        }
+        li:nth-child(1) {
+            display: block;
+            opacity: 0;
+            transform: rotateY(24deg) translate3d(-220px, 0, -600px);
+        }
+        li:nth-child(2) {
+            display: block;
+            transform: rotateY(36deg) translate3d(-40px, 0, -400px);
+        }
+        li:nth-child(3) {
+            display: block;
+            transform: rotateY(0deg) translate3d(0px, 0, 0px)
+        }
+        li:nth-child(4) {
+            display: block;
+            transform: rotateY(-36deg) translate3d(40px, 0, -400px);
+        }
+        li:nth-child(5) {
+            display: block;
+            opacity: 0;
+            transform: rotateY(-24deg) translate3d(220px, 0, -600px);
+        }
+        li:nth-child(6) {
+            display: none;
         }
         .next {
             transform: rotateY(-36deg) translate3d(40px, 0, -400px);
@@ -69,28 +107,51 @@
             opacity: 0;
             transform: rotateY(24deg) translate3d(-220px, 0, -600px);
         }
+        .pre-hot-area {
+            position: absolute;
+            top: 16px;
+            left: calc(50% - 382px);
+            height: 142px;
+            width: 146px;
+            cursor: pointer;
+        }
+        .next-hot-area {
+            position: absolute;
+            top: 16px;
+            right: calc(50% - 382px);
+            height: 142px;
+            width: 146px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
     <div class='container'>
-        <ul class='wrap'>
-            <li id='cur' class='card1 card cur'></li>
-            <li id='next' class='card2 card next' onclick='next()'></li>
-            <li id='pre' class='card3 card pre'></li>
+        <ul class='wrap' id='notice-loop'>
+            <li class='card4 card'></li>
+            <li class='card3 card'></li>
+            <li class='card1 card'></li>
+            <li class='card2 card'></li>
+            <li class='card5 card'></li>
+            <li class='card6 card'></li>
         </ul>
+        <div id='pre_hot_area' class='pre-hot-area' onclick='preLoop()'></div>
+        <div id='next_hot_area' class='next-hot-area' onclick='nextLoop()'></div>
     </div>
     <script>
-        let nextEle = document.getElementById('next')
-        let preEle = document.getElementById('pre')
-        let curEle = document.getElementById('cur')
-        function next() {
-            curEle.classList.toggle('pre')
-            nextEle.classList.toggle('next')
-            preEle.classList.toggle('pre-disappear')
+        let loop = document.getElementById('notice-loop')
+        function nextLoop () {
 
+            console.log('next')
+            let fc = loop.firstElementChild;
+            loop.appendChild(fc);
+        }
+        function preLoop () {
+            console.log('pre')
+            let lc = loop.lastElementChild;
+            loop.prepend(lc);
         }
     </script>
 </body>
-
 </html>
