@@ -31,24 +31,61 @@
     <script>
         let canvas = document.getElementById('canvas')
         let ctx = canvas.getContext('2d')
-
+        let pos = {
+            x: 0,
+            y: 0
+        }
         let img = new Image()
         img.src = './img/xibinya1.jpg'
         img.onload = function() {
             canvas.width = Math.min(window.innerWidth, img.width)
             canvas.height = canvas.width * (img.height / img.width)
-            drawBlackArea()
-        }
-        function drawBlackArea() {
-            ctx.fillRect(0, 0, canvas.width, canvas.height)
+            ctx.fillRect(0, 0, canvas.width, canvas.height) // 绘制 黑色遮盖层
         }
         function drawScratch(oldV, newV, ctx) {
+            ctx.save()
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.lineWidth = 35;
+            ctx.lineCap = 'round';
             ctx.beginPath()
             ctx.moveTo(oldV.x, oldV.y)
             ctx.lineTo(newV.x, newV.y)
-            ctx.closePath()
             ctx.stroke()
+            ctx.closePath() // closePath 与 stroke 位置互换会造成 橡皮擦的样子不同 ?
+            ctx.restore()
         }
+        canvas.addEventListener('touchstart', (e) => {
+            let startPos = e.touches[0] || e.changedTouches[0]
+            pos = {
+                x: e.touches[0].pageX,
+                y: e.touches[0].pageY
+            }
+        })
+        canvas.addEventListener('touchmove', (e) => {
+            let newPos = {
+                x: e.touches[0].pageX,
+                y: e.touches[0].pageY
+            }
+            drawScratch(pos, newPos, ctx)
+            pos = {
+                x: newPos.x,
+                y: newPos.y
+            }
+        })
+        canvas.addEventListener('touchend', (e) => {
+            let points = 0 // 透明点个数
+            let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data
+            for(let i = 0; i < imageData.length; i += 4) {
+                if(imageData[i] == 0 && imageData[i + 1] == 0 && imageData[i + 2] == 0 && imageData[i + 3] == 0) {
+                    points++
+                }
+            }
+
+            let transparentPercent = points / (canvas.width * canvas.height) * 100
+            if(transparentPercent > 80) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+            }
+        })
     </script>
 </body>
 </html>
