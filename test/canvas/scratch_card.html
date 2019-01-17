@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>scratch card</title>
+    <meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no' />
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .wrap {
+            display: inline-block;
+            font-size: 0px;
+            background: url(./img/xibinya1.jpg);
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='wrap'>
+        <canvas id='canvas'></canvas>
+    </div>
+
+    <script>
+        let canvas = document.getElementById('canvas')
+        let ctx = canvas.getContext('2d')
+
+        let img = new Image()
+        img.src = './img/xibinya1.jpg'
+        img.onload = function() {
+            canvas.width = Math.min(window.innerWidth, img.width)
+            canvas.height = canvas.width * (img.height / img.width)
+            drawBlackArea()
+        }
+        function drawBlackArea() {
+            ctx.fillRect(0, 0, canvas.width, canvas.height)
+        }
+        function drawScratch(oldV, newV, ctx) {
+            ctx.beginPath()
+            ctx.moveTo(oldV.x, oldV.y)
+            ctx.lineTo(newV.x, newV.y)
+            ctx.closePath()
+            ctx.stroke()
+        }
+    </script>
+</body>
+</html>
