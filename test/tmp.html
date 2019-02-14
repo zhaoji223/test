@@ -10,36 +10,39 @@
             margin: 0;
             padding: 0;
         }
-
+        .wrap {
+            height: 200px;
+            width: 354px;
+        }
+        .z-index10 {
+            position: absolute;
+            background: url(./demo/网易云音乐/img/xibinya1.jpg);
+            background-size: cover;
+            z-index: 10;
+        }
+        .z-index11 {
+            position: absolute;
+            background: url(./demo/网易云音乐/img/xibinya2.jpg);
+            background-size: cover;
+            z-index: 11;
+        }
     </style>
 </head>
 <body>
-   <div class='wrap'>
-       <div class='content'>content</div>
-   </div>
+   <div class='wrap z-index10' ontouchstart='start()' ontouchmove='move()' ontouchend='end()'></div>
+   <div id='pos2' class='wrap z-index11' ontouchstart='start(event)' ontouchmove='move(event)' ontouchend='end()'></div>
 
     <script>
-        let timeOut = 0
-        function start() {
-            console.log('start')
-            timeOut = setTimeout(() => {
-                timeOut = 0
-                document.getElementById('test').innerHTML = '长按事件'
-            }, 500)
+        let pos2 = document.getElementById('pos2')
+        // offsetTop clientTop scrollTop
+        function start(e) {
+            console.log('touch start')
         }
-        function move() {
-            clearTimeout(timeOut)
-            timeOut = 0
-            console.log('move')
+        function move(e) {
+            console.log('touch move')
         }
         function end() {
-            console.log('end')
-            
-            clearTimeout(timeOut)
-            console.log(timeOut)
-            if (timeOut != 0) {
-                document.getElementById('test').innerHTML = 'click事件'
-            }
+            console.log('touch end')
         }
     </script>
 </body>
