@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Examples</title>
+    <meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no'/>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <img id='previewImg' src="./assets/1.jpg" alt="">
+    <script src='http://res.wx.qq.com/open/js/jweixin-1.4.0.js'></script>
+    <script>
+        var test = document.getElementById('previewImg')
+        test.addEventListener('click', function(e) {
+            var imglist = []
+            var imgsrc = e.target.src
+            imglist.push('http://192.168.35.37:8081/test/wx/assets/1.jpg')
+            imglist.push('http://192.168.35.37:8081/test/wx/assets/2.jpg')
+            imglist.push('http://192.168.35.37:8081/test/wx/assets/3.jpg')
+            wx.previewImage({
+                current: imgsrc,
+                urls: imglist
+            })
+        })
+    </script>
+</body>
+</html>

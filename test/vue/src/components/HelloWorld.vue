@@ -8,7 +8,7 @@
             <div class='container'>
                 <input id='nameInput' maxlength="10" class='input-item' type="text" placeholder='请输入姓名或者昵称'>
                 <div class='input-item'>borth</div>
-                <img  class='confirm-btn' src="../assets/btn.png" alt="">
+                <img @click='jump' class='confirm-btn' src="../assets/btn.png" alt="">
             </div>
             <img class='ad' src="../assets/ad.png" alt="">
         </section>
@@ -18,6 +18,12 @@
 <script>
 export default {
     name: 'new_year_2019_activity_form',
+    methods: {
+        jump() {
+            console.log('========')
+            this.$router.push('/chouqian')
+        }
+    }
 };
 </script>
 
