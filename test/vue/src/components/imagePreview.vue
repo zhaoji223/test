@@ -56,18 +56,6 @@
                 this.curImgCopy = this.imageList[this.curImgIndex - 1]
             }
         },
-        // watch: {
-        //     curImgCopy: function(newV, oldV) {
-        //         let curImg = newV
-        //         let curGroupImgs = this.imageList
-        //         if(is_weixin()) {
-        //             wx.previewImage({
-        //                 current: curImg,
-        //                 urls: curGroupImgs
-        //             });
-        //         }
-        //     }
-        // },
         mounted() {
             this.curImgCopy = this.curImage
             if(this.imageList.length) {
