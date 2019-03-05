@@ -1,5 +1,5 @@
 <template>
-    <div class='image-preview'>
+    <div class='image-preview' style='height: 1000px'>
         <div style='padding: 17.5px 16px 0px;'>
             <img v-for='item in list' class='image-icon' :src='item' alt="" @click='chageCurSelect(item)'>
         </div>
@@ -28,7 +28,7 @@ export default {
                 'https://static2.qschou.com/img/v8/image_preview/assets/7.jpg',
                 'https://static2.qschou.com/img/v8/image_preview/assets/8.jpg',
             ],
-            cur: '',
+            cur: 'https://static2.qschou.com/img/v8/image_preview/assets/2.jpg',
         }
     },
     components: {
@@ -37,35 +37,12 @@ export default {
     methods: {
         chageCurSelect(cur) {
             this.cur = cur
-            // let curGroupImgs = this.list
-            // if(is_weixin()) {
-            //     wx.previewImage({
-            //         current: cur,
-            //         urls: curGroupImgs
-            //     });
-            // }
             this.showPreView = true
             
         },
         closePreview() {
-            console.log('close')
             this.showPreView = false
         }
-    },
-    // watch: {
-    //     cur: function(newV, oldV) {
-    //         let curImg = this.cur
-    //         let curGroupImgs = this.list
-    //         if(is_weixin()) {
-    //             wx.previewImage({
-    //                 current: curImg,
-    //                 urls: curGroupImgs
-    //             });
-    //         }
-    //     }
-    // },
-    mounted() {
-        this.cur = 'https://static2.qschou.com/img/v8/image_preview/assets/2.jpg'
     }
 };
 </script>
