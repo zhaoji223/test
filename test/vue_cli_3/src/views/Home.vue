@@ -128,6 +128,7 @@ export default {
         }
     ],
     series: [{
+        name: '测试 ',
         type: 'line',
         symbol: 'circle',
         itemStyle: {
@@ -146,6 +147,16 @@ export default {
 }
         temp.series[0].data = tempData
         this.chart.setOption(temp);
+    },
+    created() {
+        fetch('/project/index/auth3/c68cfaee-3fdd-4bf7-96f6-3a894380f505', {
+            credentials: 'include',
+            method: 'get',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+                'Accept': 'application/json'
+            }
+        })
     }
 };
 </script>

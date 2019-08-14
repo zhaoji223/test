@@ -17,65 +17,104 @@
             padding: 0;
         }
         .test {
-            width: 1200px;
-            height: 30px;
-            background: #623314;
+            display: flex;
+            justify-content: space-between;
+        }
+        .test1 {
+            margin-right: 20px;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        .test2 {
+            height: 100px;
+            background: blue;
         }
     </style>
 </head>
 
 <body>
-<div>
-    <div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
-        <div class='test'></div>
+<div class='test'>  
+    <div class='test1'>
+        <div style='width: 100%;'></div>
     </div>
+    <div class='test2'></div>
 </div>
 <script>
+    let oneDay = 24 * 60 * 60 * 1000
+    let startTime = 1564588800000
+    let endTime = 1564588800000 + oneDay * 8 - 1
+    function transformData(data) {
+        // 填充丰富data
+        let daysNum = (endTime - startTime + 1) / oneDay
+        let dataMap = {}
+        for(let i = 0; i < daysNum; i++) {
+            dataMap[startTime + oneDay * i] = 0
+        }
+        // undefine, null 过滤
+        if(data) {
+            // 间断 日期数据 补齐
+            data.map(item => {
+                dataMap[new Date(item.date).getTime()] = item.count
+            })
+        }
+        // 转换 X轴展示的日期类型
+        let dataMapCopy = {} 
+        for(let [key, value] of Object.entries(dataMap)) {
+            let temp = {}
+            temp[getQuaterOfYear(key)] = value
+            if(dataMapCopy[getQuaterOfYear(key)] && dataMapCopy[getQuaterOfYear(key)] != 0) {
+                dataMapCopy[getQuaterOfYear(key)] += value
+            } else {
+                dataMapCopy[getQuaterOfYear(key)] = value
+            }
+        }
+        // data转换为 echart识别的数据格式
+        let tempData = [] 
+            for(let [key, value] of Object.entries(dataMapCopy)) {
+                tempData.push({
+                    value: [key, value]
+                })
+            }
+            this.data = tempData
+        return tempData
+    }
+    function timeStampToDate(timeStamp, format = '-') {
+        let date = new Date(timeStamp)
+        let year = date.getFullYear()
+        let month = date.getMonth() + 1
+        let day = date.getDate()
+        month = month < 10 ? '0' + month : month
+        day = day < 10 ? '0' + day : day
+        return [year, month, day].join(format)
+    }
+    function getWeekOfYear(timeStamp){
+        var date = new Date(Number.parseInt(timeStamp));
+        var firstDay = new Date(date.getFullYear(), 0, 1);
+        var dayOfWeek = firstDay.getDay(); 
+        var spendDay = 1;
+        if (dayOfWeek != 0) {
+            spendDay = 7 - dayOfWeek + 1;
+        }
+        firstDay = new Date(date.getFullYear(),0, 1 + spendDay);
+        var d = Math.ceil((date.valueOf() - firstDay.valueOf()) / 86400000);
+        var result = Math.ceil(d / 7);
+        return `${date.getFullYear()}-w${result + 1}`;
+    };
 
+    function getMonthOfYear(timeStamp){
+        var date = new Date(Number.parseInt(timeStamp));
+        return `${date.getFullYear()}-${date.getMonth() + 1}`
+    };
+
+    function getQuaterOfYear(timeStamp){
+        var date = new Date(Number.parseInt(timeStamp));
+        var month = date.getMonth() + 1
+        return `${date.getFullYear()}-Q${Math.trunc(month/3) + 1 }`
+    };
+
+    let mock = [{"date":"2019-08-01","count":100},{"date":"2019-08-03","count":10},{"date":"2019-08-07","count":20}]
+    console.log(transformData(mock))
 </script>
 </body>
 

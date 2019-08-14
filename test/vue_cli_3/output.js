@@ -56,7 +56,7 @@
             loader: 'cache-loader',
             options: {
               cacheDirectory: '/Users/zhaoji/repository/test/vue_cli_3/node_modules/.cache/vue-loader',
-              cacheIdentifier: '9ce7320e'
+              cacheIdentifier: '8bd43786'
             }
           },
           /* config.module.rule('vue').use('vue-loader') */
@@ -67,7 +67,7 @@
                 preserveWhitespace: false
               },
               cacheDirectory: '/Users/zhaoji/repository/test/vue_cli_3/node_modules/.cache/vue-loader',
-              cacheIdentifier: '9ce7320e'
+              cacheIdentifier: '8bd43786'
             }
           }
         ]
@@ -1081,7 +1081,7 @@
                 '.vue'
               ],
               cache: true,
-              cacheIdentifier: '17963b18',
+              cacheIdentifier: '543e8e0d',
               emitWarning: true,
               emitError: false,
               eslintPath: '/Users/zhaoji/repository/test/vue_cli_3/node_modules/eslint/lib/api.js',
