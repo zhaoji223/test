@@ -149,14 +149,14 @@ export default {
         this.chart.setOption(temp);
     },
     created() {
-        fetch('/project/index/auth3/c68cfaee-3fdd-4bf7-96f6-3a894380f505', {
+        fetch('/v3.0.0/project/index/auth3/c68cfaee-3fdd-4bf7-96f6-3a894380f505', {
             credentials: 'include',
             method: 'get',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
                 'Accept': 'application/json'
             }
-        })
+        }).then(()=>{}).catch(()=>{})
     }
 };
 </script>
