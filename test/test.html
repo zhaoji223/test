@@ -25,13 +25,39 @@
             height: 1000px;
             background: skyblue;
         }
+        .swiper-slide {
+            height: 100px;
+            width: 100vw;
+            background: red;
+        }
     </style>
-    <script type="text/javascript" src='./dist/myTest.js'></script>
 </head>
 
 <body>
-<div class='test'>
+    <div class='swiper-container'>
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
+        </div>
+    </div>
 </div>
+<script> 
+    
+    var mySwiper = new Swiper('.swiper-container',{
+      effect : 'coverflow',
+      slidesPerView: 3,
+      centeredSlides: true,
+      coverflowEffect: {
+        rotate: 30,
+        stretch: 10,
+        depth: 60,
+        modifier: 2,
+        slideShadows : true
+      },
+    })
+    </script>
 </body>
 
 </html>

@@ -20,7 +20,7 @@
 <body>
     <script>
         var myAxios = axios.create({
-            timeout: 10000,
+            timeout: 3000,
             showMessage: true,
         })
         console.log(myAxios.defaults)
@@ -34,9 +34,11 @@
             console.log('ok')
             console.log(res)
             return res.data
-        }, function(res) {
+        }, function(error) {
             console.log('fail:   ')
-            console.log(res)
+            console.log(error)
+            console.log('-----')
+            console.log(error.message)
         });
         // config order of precedence
         myAxios.get(`https://gateway.qschou.com/v3.0.0/user/users/info`, {showMessage: false}).then((res) => {
