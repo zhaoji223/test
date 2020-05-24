@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .item {
+            margin: 20px 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class='item'>
+        <label for="">身高：</label>
+        <input id='height' type="text">cm
+    </div>
+    <div class='item'>
+        <label for="">体重：</label>
+        <input id='weight' type="text">kg
+    </div>
+    <button class='item' onclick='calcBMI()'>计算体质指数(BMI)：</button>
+    <text id='bmi'></text>
+    <img width="100%" src="./images/BMI指数.jpg" alt="">
+</body>
+<script>
+    let domHeight = document.getElementById('height') 
+    let domWeight = document.getElementById('weight')
+    let domBMI = document.getElementById('bmi')
+    let BMI = ''
+
+    function calcBMI() {
+        let height = Number(domHeight.value)/100 || 0
+        let weight = Number(domWeight.value) || 0
+        if(weight != 0 && height != 0) {
+            BMI = (weight/height/height).toFixed(2)
+            domBMI.innerText = BMI
+        }
+    }
+</script>
+</html>
