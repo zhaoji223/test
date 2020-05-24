@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "jsonp": "^0.2.1",
+    "sensors-data-utils": "git+https://code.qschou.com/liuz/sensors-data-utils.git#v1.0.3",
     "swiper": "3.2.7",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.8"

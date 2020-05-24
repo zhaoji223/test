@@ -2,61 +2,31 @@
 <html lang="zh-CN">
 
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="Keywords" content=""/>
-    <meta name="Description" content=""/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <meta content="telephone=no" name="format-detection"/>
-    <meta content="email=no" name="format-detection"/>
+    <meta charset="UTF-8" />
+    <meta name="Keywords" content="" />
+    <meta name="Description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
     <title>Document</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
+        * {
+            margin: 0px;
+            padding: 0px;
         }
-        /* #test1 {
-            height: 10px;
-            width: 100px;
-        } */
-        .bg {
-            width: 100%;
-            height: 1000px;
-            background: skyblue;
-        }
-        .swiper-slide {
-            height: 100px;
-            width: 100vw;
-            background: red;
+        .content {
+            background: repeating-radial-gradient(circle, rgb(255, 255, 255) 5%, rgb(0, 0, 0) 10%);
         }
     </style>
 </head>
 
 <body>
-    <div class='swiper-container'>
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-        </div>
+    <div class='content'>
     </div>
-</div>
-<script> 
-    
-    var mySwiper = new Swiper('.swiper-container',{
-      effect : 'coverflow',
-      slidesPerView: 3,
-      centeredSlides: true,
-      coverflowEffect: {
-        rotate: 30,
-        stretch: 10,
-        depth: 60,
-        modifier: 2,
-        slideShadows : true
-      },
-    })
+    <script>
+
     </script>
 </body>
 
