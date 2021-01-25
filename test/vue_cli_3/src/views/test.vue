@@ -4,7 +4,7 @@
         <div @click='changeOption'>btn</div> -->
 
         <div v-if="loginType === 'username'">
-            <label>Username</label>
+            <label>{{obj.name}}</label>
             <input placeholder="Enter your username">
         </div>
         <div v-else>
@@ -119,6 +119,9 @@ export default {
                     },
                     smooth: true //是否平滑曲线显示
                 }]
+            },
+            obj: {
+                name: 123
             }
         }
     },
@@ -152,6 +155,13 @@ export default {
         // this.chart = echarts.init(document.getElementById('demo1'));
         // this.options.series[0].data = this.data
         // this.chart.setOption(this.options);
+        setTimeout(() => {
+            
+            console.log('=======')
+            console.log(this)
+            console.log(this.obj)
+            this.obj.name = 456
+        }, 3000)
     }
 };
 </script>

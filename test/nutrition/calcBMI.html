@@ -21,11 +21,13 @@
         <input id='weight' type="text">kg
     </div>
     <button class='item' onclick='calcBMI()'>计算体质指数(BMI)：</button>
+    <div style='color: red;'>BMI指数不适用与肌肉发达者</div>
     <text id='bmi'></text>
     <img width="100%" src="./images/BMI指数.jpg" alt="">
+    <button class='item' onclick='jump()'>查看每日需要摄入多少卡路里(Kcal)</button>
 </body>
 <script>
-    let domHeight = document.getElementById('height') 
+    let domHeight = document.getElementById('height')
     let domWeight = document.getElementById('weight')
     let domBMI = document.getElementById('bmi')
     let BMI = ''
@@ -36,6 +38,13 @@
         if(weight != 0 && height != 0) {
             BMI = (weight/height/height).toFixed(2)
             domBMI.innerText = BMI
+        }
+    }
+    
+    function jump() {
+        if(domHeight.value && domWeight.value) {
+            let url = './calcKcal.html?height=' + domHeight.value + '&weight' + domWeight.value
+            window.open(url, '_blank'); 
         }
     }
 </script>

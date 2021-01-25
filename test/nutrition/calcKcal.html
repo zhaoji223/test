@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .item {
+            margin: 20px 0px;
+        }
+    </style>
+    <script crossorigin="anonymous" integrity="sha384-i+fXrQ+G3+h2478EWpSpIXivtKbbze+0SNOXJGizkAp6DVG/m2fE6hiWeDwskVvp" src="https://lib.baomitu.com/echarts/4.7.0/echarts.js"></script>
+</head>
+<body>
+    <div class='item'>身体健康的成年人(50岁以下)</div>
+    <button onclick='choseLaborType("轻体力劳动")'>轻体力劳动</button>
+    <button onclick='choseLaborType("中体力劳动")'>中体力劳动</button>
+    <button onclick='choseLaborType("重体力劳动")'>重体力劳动</button>
+    <div class='item'>
+        劳动力类型：<span id='laborType' >轻体力劳动</span>
+    </div>
+    <div class='item'>
+        每日所需卡路里(Kcal):<span id='totalKcal'></span>
+    </div>
+    <div class='item' onclick='jump()'>建议每日食物摄入量(食物交换份法)</div>
+    <img src="./images/每千克标准体重能量需要.png" width="100%" style="min-width: 800px;" alt="">
+    <div id="main" style="width: 600px;height:400px;"></div>
+</body>
+<script>
+    let weight = getQuery('weight') || 0
+    let height = getQuery('height') || 0
+    let BMI = (weight/height/height).toFixed(2)
+    let BMIGoal = 21.9
+    let weightGoal = (height * height * BMIGoal / 10000).toFixed(1)
+    let totalKcal
+    let domLaborType = document.getElementById('laborType')
+    let domTotalKcal = document.getElementById('totalKcal')
+    
+    calcKcal()
+
+    let myChart = echarts.init(document.getElementById('main'))
+    let option = {
+        title: {text: 'Line Chart'},
+        tooltip: {},
+        toolbox: {
+            feature: {
+                dataView: {},
+                saveAsImage: {
+                    pixelRatio: 2
+                },
+                restore: {}
+            }
+        },
+        xAxis: {
+            min: 1,
+            minInterval: 1,
+            axisLine: {
+                onZero: false
+            }
+            
+        },
+        yAxis: {},
+        series: [{
+            type: 'line',
+            smooth: true,
+            data: [[18.5, 35], [23.9, 30], [27.9, 25], [35, 20]]
+        }]
+    }
+    myChart.setOption(option)
+    
+    function choseLaborType(value) {
+        domLaborType.innerHTML = value
+        calcKcal(value)
+    }
+
+    function calcKcal(value) {
+        // y(kg/kcal) = -5/5.04 * x (BMI) + 48.315, [{x: 18.5, y: 30}, {x: 23.9, y: 25}]
+        // x轴: 23.9 ~ 18.5, y轴: 20~25 / 25~30 / 30~35, 斜率k值固定: -5/5.04
+        // 轻体力劳动者: 25~30; 中体力劳动者: 30~35, 斜率k未变, 整体上移5
+        let k = -0.99
+        let z = 0
+        if(value === '中体力劳动') {
+            z += 5
+        } else if(value === '重体力劳动') {
+            z += 10
+        }
+
+        if(BMI < 18.5) {
+            // 消瘦: 35
+            // totalKcal = '营养不良'
+            totalKcal = Math.round(weightGoal * (35 + z))
+        } else if(BMI <= 23.9) {
+            totalKcal = Math.round(weightGoal * (k * BMI + (48.315 + z)))
+        } else if(BMI <= 27.9) {
+            // 超重采用20~25最高值
+            totalKcal = Math.round(weightGoal * (25 + z))
+        } else if(BMI < 35) {
+            // 肥胖采用超重值23, 肥胖kg/kcal: 15~20
+            totalKcal = Math.round(weightGoal * (23 + z))
+        } else {
+            // 过度肥胖 建议就医
+            totalKcal = '过度肥胖'
+        }
+        domTotalKcal.innerHTML = totalKcal
+    }
+
+    function jump() {
+        if(totalKcal && totalKcal != 0) {
+            let url = './calcFood.html?calorie=' + totalKcal
+            window.open(url, '_blank'); 
+        }
+    }
+
+    function getQuery (queryName) {
+        const query = decodeURI(window.location.search.substring(1))
+        const vars = query.split('&')
+        for (let i = 0; i < vars.length; i += 1) {
+            const pair = vars[i].split('=')
+            if (pair[0] === queryName) { return pair[1] }
+        }
+        return ''
+    }
+</script>
+</html>

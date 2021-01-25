@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .item {
+            margin: 20px 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class='item'>每日所需卡路里Kcal: <span id='calorie'></span> </div>
+    <div class='item'>根据碳水、脂肪、蛋⽩供能⽐为5: 3: 2, 每日所需营养素:</div>
+    <div class='item'>
+        <div>
+            每日所需碳水化合物g: 
+            <span id='carbon'></span>
+        </div>
+        <div>
+            每日所需蛋白质g: 
+            <span id='pro'></span>
+        </div>
+        <div>
+            每日所需脂肪g: 
+            <span id='fat'></span>
+        </div>
+    </div>
+    <div class='item'>
+        <div>
+            建议每日摄入谷薯类g: 
+            <span id='grain'></span>
+        </div>
+        <div>
+            建议每日摄入蔬菜g: 300～500
+        </div>
+        <div>
+            建议每日摄入肉类g: 
+            <span id='meat'></span>
+        </div>
+        <div>
+            建议每日摄入豆制品g: 
+            <span id='bean'></span>
+        </div>
+        <div>
+            建议每日摄入油脂g: 
+            <span id='oli'></span>
+        </div>
+        <div>
+            建议每日摄入水果: 200~350g
+        </div>
+        <div>
+            建议每日摄入牛奶: 240ml
+        </div>
+        <div>
+            建议每日摄入坚果: 15g
+        </div>
+        <div>
+            建议每日摄入鸡蛋: 1个
+        </div>
+    </div>
+</body>
+<script>
+    let calorieDom = document.getElementById('calorie')
+    let carbonDom = document.getElementById('carbon')
+    let proDom = document.getElementById('pro')
+    let fatDom = document.getElementById('fat')
+    let grainDom = document.getElementById('grain')
+    let meatDom = document.getElementById('meat')
+    let beanDom = document.getElementById('bean')
+    let oliDom = document.getElementById('oli')
+
+    let calorie = getQuery('calorie') || 0
+    // let calorie = 1800 + 500
+    // 根据碳水、脂肪、蛋⽩供能⽐为5: 3: 2, 计算相对应份数
+    let carbohydrateEnergy = calorie * 0.5
+    let fatEnergy = calorie * 0.3
+    let proteinEnergy = calorie * 0.2
+
+    // 计算碳水份数
+    let carbonWeight = (carbohydrateEnergy / 4).toFixed()
+    let proWeight = (proteinEnergy / 4).toFixed()
+    let fatWeight = (fatEnergy / 9).toFixed()
+
+    console.log('碳水: ', carbonWeight)
+    console.log('脂肪: ', fatWeight)
+    console.log('蛋白质: ', proWeight)
+
+    calorieDom.innerHTML = calorie
+    carbonDom.innerHTML = carbonWeight
+    proDom.innerHTML = proWeight
+    fatDom.innerHTML = fatWeight
+
+    // 食物交换份配餐注意点
+    // 1、根据碳⽔的量计算主⻝
+    // 2、根据蛋白的量计算肉蛋奶⾖
+    // 3、先假设蔬菜为1份，⽜奶为1.5份
+    // 4、先把水果计⼊谷物
+    // 5、先把坚果计入油脂
+    // 6、计算碳⽔时，先不考虑⼤豆份数
+    let vegetablesNum = 1
+    let milkNum = 1.5
+    // 谷物份数 = ⾕谷物份数✖ 20+蔬菜份数✖ 17+⽜牛奶份数✖ 6
+    let grainNum = ((carbonWeight - vegetablesNum * 17 - milkNum * 6) / 20).toFixed(1)
+    // 肉蛋豆份数(肉: 2/3.5, 蛋: 1份, 豆: 1.5/3.5) = 谷物份数✖ 2+蔬菜份数✖ 5+⽜奶份数✖ 5+⾁蛋⾖份数✖ 9
+    let meatEggBeanNum = ((proWeight - grainNum * 2 - vegetablesNum * 5 - milkNum * 5) / 9).toFixed(1)
+    let meatNum = ((meatEggBeanNum - 1) * 2 / 3.5).toFixed(1)
+    let beanNum = ((meatEggBeanNum - 1) * 1.5 / 3.5).toFixed(1)
+    // 油脂类份数 = 所有食物中的脂肪加起来
+    let fatNum = ((fatWeight - milkNum * 5 - beanNum * 4 - meatNum * 6 - 6) / 10).toFixed(1)
+
+
+    console.log('谷物(grain)份数: ', grainNum)
+    console.log('肉蛋豆份数(meatEggBean)份数: ', meatEggBeanNum)
+    console.log('肉份数(meatNum)份数: ', meatNum)
+    console.log('豆份数(beanNum)份数: ', beanNum)
+    console.log('油脂类(fatNum)份数: ', fatNum)
+
+    console.log('=================')
+    console.log('每日牛奶g: ', milkNum * 160)
+    console.log('每日蔬菜g: ', vegetablesNum * 500)
+    console.log('谷类g: ', grainNum * 60 - 200)
+    console.log('鸡蛋1个: 约50g')
+    console.log('肉类g: ', meatNum * 50)
+    console.log('豆类g: ', beanNum * 50)
+    console.log('坚果g: 约15g')
+    console.log('油脂g: ', fatNum * 10)
+
+    grainDom.innerHTML = grainNum * 60 - 200
+    meatDom.innerHTML = meatNum * 50
+    beanDom.innerHTML = beanNum * 50
+    oliDom.innerHTML = fatNum * 10
+
+
+    function getQuery (queryName) {
+        const query = decodeURI(window.location.search.substring(1))
+        const vars = query.split('&')
+        for (let i = 0; i < vars.length; i += 1) {
+            const pair = vars[i].split('=')
+            if (pair[0] === queryName) { return pair[1] }
+        }
+        return ''
+    }
+</script>
+</html>
